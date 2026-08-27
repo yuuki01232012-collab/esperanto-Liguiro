@@ -1,4 +1,4 @@
-script.jp
+script.js
 alert("script.js OK");
 const toLiguiro = {
   "a": "ᚨ",

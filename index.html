@@ -5,24 +5,29 @@ index.html
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>エスペラント⇔ルーンリギーロ</title>
-  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
   <h1>エスペラント⇔ルーンリギーロ</h1>
 
-  <p>エスペラントまたはルーンリギーロを入力してください</p>
+  <h2>エスペラント → ルーンリギーロ</h2>
 
-  <input
-    id="esperanto"
-    type="text"
-    placeholder="例：Saluton / ᛋᚨLᚢᛏᛟᚾ"
-  >
+  <input id="esperanto" type="text" placeholder="例：Saluton">
 
-  <button onclick="convert()">変換</button>
+  <button onclick="convertToLiguiro()">変換</button>
 
   <p id="result">変換結果：</p>
+
+
+  <h2>ルーンリギーロ → エスペラント</h2>
+
+  <input id="liguiro" type="text" placeholder="例：ᛋᚨLᚢᛏᛟᚾ">
+
+  <button onclick="convertToEsperanto()">変換</button>
+
+  <p id="liguiroResult">変換結果：</p>
+
 
   <script src="./script.js"></script>
 

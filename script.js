@@ -1,3 +1,4 @@
+script.js
 const dictionary = {
   "a": "ᚨ",
   "b": "ᛒ",

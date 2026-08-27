@@ -1,0 +1,75 @@
+script.js
+const dictionary = {
+  "a": "阿",
+  "b": "美",
+  "c": "世",
+  "ĉ": "茶",
+  "d": "弩",
+  "e": "江",
+  "f": "府",
+  "g": "我",
+  "ĝ": "餓",
+  "h": "波",
+  "ĥ": "覇",
+  "i": "伊",
+  "j": "夜",
+  "ĵ": "邪",
+  "k": "加",
+  "l": "羅",
+  "m": "麻",
+  "n": "奈",
+  "o": "於",
+  "p": "波",
+  "r": "良",
+  "s": "佐",
+  "ŝ": "沙",
+  "t": "太",
+  "u": "宇",
+  "ŭ": "羽",
+  "v": "和",
+  "z": "座",
+  "A": "阿",
+  "B": "美",
+  "C": "世",
+  "Ĉ": "茶",
+  "D": "弩",
+  "E": "江",
+  "F": "府",
+  "G": "我",
+  "Ĝ": "餓",
+  "H": "波",
+  "Ĥ": "覇",
+  "I": "伊",
+  "J": "夜",
+  "Ĵ": "邪",
+  "K": "加",
+  "L": "羅",
+  "M": "麻",
+  "N": "奈",
+  "O": "於",
+  "P": "波",
+  "R": "良",
+  "S": "佐",
+  "Ŝ": "沙",
+  "T": "太",
+  "U": "宇",
+  "Ŭ": "羽",
+  "V": "和",
+  "Z": "座"
+};
+
+function convert() {
+  const input = document.getElementById("esperanto").value;
+
+  let result = "";
+
+  for (const character of input) {
+    if (dictionary[character]) {
+      result += dictionary[character];
+    } else {
+      result += character;
+    }
+  }
+
+  document.getElementById("result").textContent =
+  "変換結果：" + (result || "登録されていません");

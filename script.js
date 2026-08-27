@@ -1,4 +1,3 @@
-script.js
 const toLiguiro = {
   "a": "ᚨ",
   "b": "ᛒ",

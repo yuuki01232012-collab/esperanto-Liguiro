@@ -1,4 +1,5 @@
 script.js
+alert("script.jsは読み込まれています！");
 const dictionary = {
   "a": "ᚨ",
   "b": "ᛒ",

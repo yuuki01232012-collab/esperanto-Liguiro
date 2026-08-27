@@ -1,75 +1,25 @@
 script.js
-alert("script.js OK");
 const toLiguiro = {
-  "a": "ᚨ",
-  "b": "ᛒ",
-  "c": "ᚲ",
-  "ĉ": "ᚲ^",
-  "d": "ᛞ",
-  "e": "ᛊ",
-  "f": "ᚠ",
-  "g": "ᚷ",
-  "ĝ": "ᚷ^",
-  "h": "ᚺ",
-  "ĥ": "ᚺ^",
-  "i": "ᛁ",
-  "j": "ᚼ",
-  "ĵ": "ᚼ^",
-  "k": "K",
-  "l": "L",
-  "m": "ᛗ",
-  "n": "ᚾ",
-  "o": "ᛟ",
-  "p": "ᛈ",
-  "q": "ᚦ",
-  "r": "ᚱ",
-  "s": "ᛋ",
-  "ŝ": "ᛋ^",
-  "t": "ᛏ",
-  "u": "ᚢ",
-  "ŭ": "ᚢ^",
-  "v": "V",
-  "w": "ᚹ",
-  "x": "ᛝ",
-  "y": "ᛃ",
-  "z": "Z",
+  "a": "ᚨ", "b": "ᛒ", "c": "ᚲ", "ĉ": "ᚲ^",
+  "d": "ᛞ", "e": "ᛊ", "f": "ᚠ", "g": "ᚷ",
+  "ĝ": "ᚷ^", "h": "ᚺ", "ĥ": "ᚺ^", "i": "ᛁ",
+  "j": "ᚼ", "ĵ": "ᚼ^", "k": "K", "l": "L",
+  "m": "ᛗ", "n": "ᚾ", "o": "ᛟ", "p": "ᛈ",
+  "q": "ᚦ", "r": "ᚱ", "s": "ᛋ", "ŝ": "ᛋ^",
+  "t": "ᛏ", "u": "ᚢ", "ŭ": "ᚢ^", "v": "V",
+  "w": "ᚹ", "x": "ᛝ", "y": "ᛃ", "z": "Z",
 
-  "A": "ᚨ",
-  "B": "ᛒ",
-  "C": "ᚲ",
-  "Ĉ": "ᚲ^",
-  "D": "ᛞ",
-  "E": "ᛊ",
-  "F": "ᚠ",
-  "G": "ᚷ",
-  "Ĝ": "ᚷ^",
-  "H": "ᚺ",
-  "Ĥ": "ᚺ^",
-  "I": "ᛁ",
-  "J": "ᚼ",
-  "Ĵ": "ᚼ^",
-  "K": "K",
-  "L": "L",
-  "M": "ᛗ",
-  "N": "ᚾ",
-  "O": "ᛟ",
-  "P": "ᛈ",
-  "Q": "ᚦ",
-  "R": "ᚱ",
-  "S": "ᛋ",
-  "Ŝ": "ᛋ^",
-  "T": "ᛏ",
-  "U": "ᚢ",
-  "Ŭ": "ᚢ^",
-  "V": "V",
-  "W": "ᚹ",
-  "X": "ᛝ",
-  "Y": "ᛃ",
-  "Z": "Z"
+  "A": "ᚨ", "B": "ᛒ", "C": "ᚲ", "Ĉ": "ᚲ^",
+  "D": "ᛞ", "E": "ᛊ", "F": "ᚠ", "G": "ᚷ",
+  "Ĝ": "ᚷ^", "H": "ᚺ", "Ĥ": "ᚺ^", "I": "ᛁ",
+  "J": "ᚼ", "Ĵ": "ᚼ^", "K": "K", "L": "L",
+  "M": "ᛗ", "N": "ᚾ", "O": "ᛟ", "P": "ᛈ",
+  "Q": "ᚦ", "R": "ᚱ", "S": "ᛋ", "Ŝ": "ᛋ^",
+  "T": "ᛏ", "U": "ᚢ", "Ŭ": "ᚢ^", "V": "V",
+  "W": "ᚹ", "X": "ᛝ", "Y": "ᛃ", "Z": "Z"
 };
 
 
-// リギーロ → エスペラント
 const toEsperanto = {
   "ᚲ^": "Ĉ",
   "ᚷ^": "Ĝ",
@@ -107,52 +57,43 @@ const toEsperanto = {
 };
 
 
-function convert() {
+function convertToLiguiro() {
   const input = document.getElementById("esperanto").value;
 
   let result = "";
 
-  // リギーロの文字が含まれているか判定
-  const isLiguiro = /[ᚨᛒᚲᛞᛊᚠᚷᚺᛁᚼᛗᚾᛟᛈᚦᚱᛋᛏᚢᚹᛝᛃ]/.test(input);
-
-  if (isLiguiro) {
-
-    // 2文字で構成されるルーンを先に処理
-    let i = 0;
-
-    while (i < input.length) {
-
-      const two = input.substring(i, i + 2);
-
-      if (toEsperanto[two]) {
-        result += toEsperanto[two];
-        i += 2;
-        continue;
-      }
-
-      const one = input[i];
-
-      if (toEsperanto[one]) {
-        result += toEsperanto[one];
-      } else {
-        result += one;
-      }
-
-      i++;
-    }
-
-  } else {
-
-    // エスペラント → リギーロ
-    for (const character of input) {
-      if (toLiguiro[character]) {
-        result += toLiguiro[character];
-      } else {
-        result += character;
-      }
-    }
+  for (const character of input) {
+    result += toLiguiro[character] || character;
   }
 
   document.getElementById("result").textContent =
+    "変換結果：" + (result || "no");
+}
+
+
+function convertToEsperanto() {
+  const input = document.getElementById("liguiro").value;
+
+  let result = "";
+  let i = 0;
+
+  while (i < input.length) {
+
+    const two = input.substring(i, i + 2);
+
+    if (toEsperanto[two]) {
+      result += toEsperanto[two];
+      i += 2;
+      continue;
+    }
+
+    const one = input[i];
+
+    result += toEsperanto[one] || one;
+
+    i++;
+  }
+
+  document.getElementById("liguiroResult").textContent =
     "変換結果：" + (result || "no");
 }

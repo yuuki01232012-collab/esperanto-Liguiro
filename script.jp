@@ -1,5 +1,5 @@
 script.jp
-const dictionary = {
+const toLiguiro = {
   "a": "ᚨ",
   "b": "ᛒ",
   "c": "ᚲ",
@@ -64,22 +64,29 @@ const dictionary = {
   "W": "ᚹ",
   "X": "ᛝ",
   "Y": "ᛃ",
-  "Z": "Z",
-  
+  "Z": "Z"
+};
+
+
+// リギーロ → エスペラント
+const toEsperanto = {
+  "ᚲ^": "Ĉ",
+  "ᚷ^": "Ĝ",
+  "ᚺ^": "Ĥ",
+  "ᚼ^": "Ĵ",
+  "ᛋ^": "Ŝ",
+  "ᚢ^": "Ŭ",
+
   "ᚨ": "A",
   "ᛒ": "B",
   "ᚲ": "C",
-  "ᚲ^": "Ĉ",
   "ᛞ": "D",
   "ᛊ": "E",
   "ᚠ": "F",
   "ᚷ": "G",
-  "ᚷ^": "Ĝ",
   "ᚺ": "H",
-  "ᚺ^": "Ĥ",
   "ᛁ": "I",
   "ᚼ": "J",
-  "ᚼ^": "Ĵ",
   "K": "K",
   "L": "L",
   "ᛗ": "M",
@@ -89,10 +96,8 @@ const dictionary = {
   "ᚦ": "Q",
   "ᚱ": "R",
   "ᛋ": "S",
-  "ᛋ^": "Ŝ",
   "ᛏ": "T",
   "ᚢ": "U",
-  "ᚢ^": "Ŭ",
   "V": "V",
   "ᚹ": "W",
   "ᛝ": "X",
@@ -100,16 +105,50 @@ const dictionary = {
   "Z": "Z"
 };
 
+
 function convert() {
   const input = document.getElementById("esperanto").value;
 
   let result = "";
 
-  for (const character of input) {
-    if (dictionary[character]) {
-      result += dictionary[character];
-    } else {
-      result += character;
+  // リギーロの文字が含まれているか判定
+  const isLiguiro = /[ᚨᛒᚲᛞᛊᚠᚷᚺᛁᚼᛗᚾᛟᛈᚦᚱᛋᛏᚢᚹᛝᛃ]/.test(input);
+
+  if (isLiguiro) {
+
+    // 2文字で構成されるルーンを先に処理
+    let i = 0;
+
+    while (i < input.length) {
+
+      const two = input.substring(i, i + 2);
+
+      if (toEsperanto[two]) {
+        result += toEsperanto[two];
+        i += 2;
+        continue;
+      }
+
+      const one = input[i];
+
+      if (toEsperanto[one]) {
+        result += toEsperanto[one];
+      } else {
+        result += one;
+      }
+
+      i++;
+    }
+
+  } else {
+
+    // エスペラント → リギーロ
+    for (const character of input) {
+      if (toLiguiro[character]) {
+        result += toLiguiro[character];
+      } else {
+        result += character;
+      }
     }
   }
 
